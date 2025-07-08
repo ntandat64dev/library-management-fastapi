@@ -1,0 +1,18 @@
+[project]
+name = "library-management-fastapi"
+version = "0.1.0"
+description = "FastAPI application for managing books in a library."
+authors = [{name = "ntandat64dev",email = "ntandat64dev@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+
+
+[tool.poetry.dependencies]
+fastapi = {extras = ["standard"], version = "^0.116.0"}
+psycopg-binary = "^3.2.9"
+sqlalchemy = "^2.0.41"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
