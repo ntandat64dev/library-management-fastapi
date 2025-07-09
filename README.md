@@ -49,13 +49,13 @@ All table must includes **audit fields**.
   - author: str
   - publisher: str
   - publication_date: date
-  - subject_id: uuid
+  - genre_id: uuid
   - language: str (language code as ISO 639-1)
   - dimension: str (widthxthickxheight format, e.g., 1.2x1.8x1.7)
   - total_copies: number
   - available_copies: number
 
-- `subject`:
+- `genre`:
 
   - id: uuid
   - name: str

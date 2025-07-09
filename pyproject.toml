@@ -5,12 +5,14 @@ description = "FastAPI application for managing books in a library."
 authors = [{name = "ntandat64dev",email = "ntandat64dev@gmail.com"}]
 readme = "README.md"
 requires-python = ">=3.10"
+package-mode = false
+dynamic = [ "dependencies" ]
 
 
 [tool.poetry.dependencies]
 fastapi = {extras = ["standard"], version = "^0.116.0"}
-psycopg-binary = "^3.2.9"
 sqlalchemy = "^2.0.41"
+psycopg2-binary = "^2.9.10"
 
 
 [build-system]
