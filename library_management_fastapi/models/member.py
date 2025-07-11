@@ -5,6 +5,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column
 
 from library_management_fastapi.database import Base
+from library_management_fastapi.models.audit_mixin import AuditMixin
 
 
 class MembershipStatus(Enum):
@@ -12,7 +13,7 @@ class MembershipStatus(Enum):
     INACTIVE = "INACTIVE"
 
 
-class Member(MappedAsDataclass, Base):
+class Member(AuditMixin, MappedAsDataclass, Base):
     __tablename__ = "member"
 
     id: Mapped[UUID] = mapped_column(

@@ -4,9 +4,10 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column
 
 from library_management_fastapi.database import Base
+from library_management_fastapi.models.audit_mixin import AuditMixin
 
 
-class Librarian(MappedAsDataclass, Base):
+class Librarian(AuditMixin, MappedAsDataclass, Base):
     __tablename__ = "librarian"
 
     id: Mapped[UUID] = mapped_column(

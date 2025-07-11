@@ -5,10 +5,11 @@ from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column, relationship
 
 from library_management_fastapi.database import Base
+from library_management_fastapi.models.audit_mixin import AuditMixin
 from library_management_fastapi.models.genre import Genre
 
 
-class Book(MappedAsDataclass, Base):
+class Book(AuditMixin, MappedAsDataclass, Base):
     __tablename__ = "book"
 
     id: Mapped[UUID] = mapped_column(

@@ -6,6 +6,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column
 
 from library_management_fastapi.database import Base
+from library_management_fastapi.models.audit_mixin import AuditMixin
 
 
 class LoanStatus(Enum):
@@ -14,7 +15,7 @@ class LoanStatus(Enum):
     OVERDUE = "OVERDUE"
 
 
-class Loan(MappedAsDataclass, Base):
+class Loan(AuditMixin, MappedAsDataclass, Base):
     __tablename__ = "loan"
 
     id: Mapped[UUID] = mapped_column(
