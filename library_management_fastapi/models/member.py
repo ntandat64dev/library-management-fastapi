@@ -19,8 +19,7 @@ class Member(AuditMixin, MappedAsDataclass, Base):
     id: Mapped[UUID] = mapped_column(
         primary_key=True, insert_default=uuid4(), init=False
     )
-    full_name: Mapped[str | None]
-    email: Mapped[str] = mapped_column(unique=True)
+    full_name: Mapped[str | None] = mapped_column(init=False)
     account_id: Mapped[UUID] = mapped_column(ForeignKey("account.id"))
     membership_status: Mapped[MembershipStatus] = mapped_column(
         insert_default=MembershipStatus.ACTIVE

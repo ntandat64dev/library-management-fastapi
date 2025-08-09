@@ -14,5 +14,4 @@ class Librarian(AuditMixin, MappedAsDataclass, Base):
         primary_key=True, insert_default=uuid4(), init=False
     )
     full_name: Mapped[str | None]
-    email: Mapped[str] = mapped_column(unique=True)
     account_id: Mapped[UUID] = mapped_column(ForeignKey("account.id"))

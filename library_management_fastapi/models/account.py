@@ -12,5 +12,5 @@ class Account(AuditMixin, MappedAsDataclass, Base):
     id: Mapped[UUID] = mapped_column(
         primary_key=True, insert_default=uuid4(), init=False
     )
-    username: Mapped[str] = mapped_column(unique=True)
+    email: Mapped[str] = mapped_column(unique=True)
     hashed_password: Mapped[str]
