@@ -1,4 +1,4 @@
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column
@@ -10,8 +10,9 @@ from library_management_fastapi.models.audit_mixin import AuditMixin
 class Librarian(AuditMixin, MappedAsDataclass, Base):
     __tablename__ = "librarian"
 
-    id: Mapped[UUID] = mapped_column(
-        primary_key=True, insert_default=uuid4(), init=False
+    account_id: Mapped[UUID] = mapped_column(
+        ForeignKey("account.id"),
+        primary_key=True,
+        init=False,
     )
     full_name: Mapped[str | None]
-    account_id: Mapped[UUID] = mapped_column(ForeignKey("account.id"))

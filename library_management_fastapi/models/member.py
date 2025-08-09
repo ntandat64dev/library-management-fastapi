@@ -1,5 +1,5 @@
 from enum import Enum
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column
@@ -16,11 +16,12 @@ class MembershipStatus(Enum):
 class Member(AuditMixin, MappedAsDataclass, Base):
     __tablename__ = "member"
 
-    id: Mapped[UUID] = mapped_column(
-        primary_key=True, insert_default=uuid4(), init=False
+    account_id: Mapped[UUID] = mapped_column(
+        ForeignKey("account.id"),
+        primary_key=True,
+        init=False,
     )
     full_name: Mapped[str | None] = mapped_column(init=False)
-    account_id: Mapped[UUID] = mapped_column(ForeignKey("account.id"))
     membership_status: Mapped[MembershipStatus] = mapped_column(
         insert_default=MembershipStatus.ACTIVE
     )

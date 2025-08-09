@@ -145,4 +145,6 @@ def downgrade() -> None:
     op.drop_table("book")
     op.drop_table("genre")
     op.drop_table("account")
+    op.execute("DROP TYPE IF EXISTS loanstatus;")
+    op.execute("DROP TYPE IF EXISTS membershipstatus;")
     # ### end Alembic commands ###

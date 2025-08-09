@@ -22,7 +22,7 @@ class Loan(AuditMixin, MappedAsDataclass, Base):
         primary_key=True, insert_default=uuid4(), init=False
     )
     book_id: Mapped[UUID] = mapped_column(ForeignKey("book.id"))
-    member_id: Mapped[UUID] = mapped_column(ForeignKey("member.id"))
+    member_id: Mapped[UUID] = mapped_column(ForeignKey("member.account_id"))
     loan_date: Mapped[datetime]
     fine_amount: Mapped[float]
     status: Mapped[LoanStatus] = mapped_column(insert_default=LoanStatus.BORROWED)
